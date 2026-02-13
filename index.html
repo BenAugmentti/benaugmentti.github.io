@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lily's Secret Page</title>
+  <style>
+    body {
+      background-color: #1a1a2e;
+      color: white;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 10px;
+      border: none;
+      background-color: #e94560;
+      color: white;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover { background-color: #c81e45; }
+    h1 { font-size: 40px; }
+    #secret { display: none; }
+  </style>
+</head>
+<body>
+  <div id="login">
+    <h1>🔒 Lily's Secret Page</h1>
+    <p id="message">You need the password to enter...</p>
+    <button onclick="step1()">Put in Password</button>
+  </div>
+  <div id="secret">
+    <h1>🎉 Welcome! 🎉</h1>
+    <p>You actually got in... impressive.</p>
+  </div>
+
+  <script>
+    let stage = 1;
+
+    function step1() {
+      let answer = prompt("Put in Password:");
+      if (answer === "Password") {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("secret").style.display = "block";
+        document.body.style.backgroundColor = "#16213e";
+      } else {
+        document.getElementById("message").textContent =
+        "❌ This password is wrong, but try again.";
+        document.querySelector("button").textContent = "Password is incorrect";
+        document.querySelector("button").onclick = step2;
+      } 
+  }
+  function step2() {
+      let answer = prompt("Nope, Try Again...");
+      if (answer === "Again") {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("secret").style.display = "block";
+        document.body.style.backgroundColor = "#16213e";
+      } else {
+        document.getElementById("message").textContent =
+        "❌ This password is wrong, but try Again.";
+        document.querySelector("button").textContent = "Password is incorrect";
+        document.querySelector("button").onclick = step3;
+      } 
+  }
+    function step3() {
+      let answer = prompt("Try Again:");
+      if (answer === "Again") {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("secret").style.display = "block";
+        document.body.style.backgroundColor = "#16213e";
+      } else {
+        alert("❌ Wrong! Think about it...");
+      }
+    }
+  </script>
+</body>
+</html>
